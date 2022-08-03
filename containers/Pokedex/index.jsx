@@ -1,4 +1,5 @@
 import { Box, SimpleGrid, Text } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 import { Card, FilterButton } from "../../components";
 import Templates from "../../templates";
 import { baseImageUrl } from "../../utils/_constants";
@@ -7,7 +8,7 @@ import useAction from "./hooks/useAction";
 
 const Pokedex = () => {
   const { count, loading, pokemons } = useAction();
-
+  const { push } = useRouter();
   return (
     <Templates>
       <Box py="1rem">
@@ -28,6 +29,7 @@ const Pokedex = () => {
                   color={bgColor.transparent}
                   tags={item.pokemons[0]?.types}
                   tagsColor={bgColor.solid}
+                  onClick={() => push(`/${item.name}`)}
                 />
               );
             })}

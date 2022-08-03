@@ -1,6 +1,7 @@
-import { Badge, Box, Flex, Image, Text } from "@chakra-ui/react";
+import { Flex, Image } from "@chakra-ui/react";
+import Caption from "../Caption";
 
-const Card = ({ title, image, color, tags, tagsColor }) => {
+const Card = ({ title, image, color, tags, tagsColor, onClick }) => {
   return (
     <Flex
       backgroundColor={color}
@@ -10,22 +11,10 @@ const Card = ({ title, image, color, tags, tagsColor }) => {
       alignItems="center"
       py="1rem"
       cursor="pointer"
+      onClick={onClick}
     >
       <Image src={image} />
-      <Box mt="1rem">
-        <Text fontSize="1.3rem" textTransform="capitalize">
-          {title}
-        </Text>
-        {tags && (
-          <Flex gap="1rem" justifyContent="center">
-            {tags.map((tag, index) => (
-              <Badge bgColor={tagsColor} color="#fff" key={index}>
-                {tag?.type?.name}
-              </Badge>
-            ))}
-          </Flex>
-        )}
-      </Box>
+      <Caption title={title} tags={tags} tagsColor={tagsColor} />
     </Flex>
   );
 };
