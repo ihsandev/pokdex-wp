@@ -1,12 +1,12 @@
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import { POKEMON_DETAIL } from "../../../graphql/_queries";
+import { GET_POKEMON_DETAIL } from "../../../graphql/_queries";
 import { PokemonTypeColor } from "../../../utils/_functions";
 
 export default function useAction() {
-  const { query } = useRouter();
-  const name = query?.name;
-  const { data, loading } = useQuery(POKEMON_DETAIL, {
+  const router = useRouter();
+  const name = router?.query?.name;
+  const { data, loading } = useQuery(GET_POKEMON_DETAIL, {
     variables: {
       name,
     },

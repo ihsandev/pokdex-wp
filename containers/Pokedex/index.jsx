@@ -24,7 +24,7 @@ const Pokedex = () => {
     handleChangeFilter,
     handleSubmitFilter,
   } = useAction();
-  const { push } = useRouter();
+  const router = useRouter();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -47,7 +47,7 @@ const Pokedex = () => {
                   color={bgColor.transparent}
                   tags={item.pokemons[0]?.types}
                   tagsColor={bgColor.solid}
-                  onClick={() => push(`/${item.name}`)}
+                  onClick={() => router.push(`/${item.name}`)}
                 />
               );
             })}
@@ -58,7 +58,7 @@ const Pokedex = () => {
             </Flex>
           )}
         </SimpleGrid>
-        <FilterButton onClick={onOpen} />
+        {pokemons.length > 0 && <FilterButton onClick={onOpen} />}
         {isOpen && (
           <ModalFilter
             title="Filter By Types"

@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { FiArrowLeftCircle } from "react-icons/fi";
 
 const Header = ({ backTo }) => {
-  const { push } = useRouter();
+  const router = useRouter();
   return (
     <Box
       as="header"
@@ -22,7 +22,7 @@ const Header = ({ backTo }) => {
             ml="1rem"
             p="0.5rem"
             cursor="pointer"
-            onClick={() => push(backTo)}
+            onClick={() => router.push(backTo)}
           >
             <FiArrowLeftCircle size={40} color="white" />
           </Box>

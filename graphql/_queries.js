@@ -1,6 +1,6 @@
 import { gql } from "@apollo/client";
 
-export const QUERY_POKEMONS = gql`
+export const GET_POKEMONS = gql`
   query getPokemon($limit: Int, $offset: Int) {
     species_aggregate: pokemon_v2_pokemonspecies_aggregate {
       aggregate {
@@ -22,7 +22,7 @@ export const QUERY_POKEMONS = gql`
   }
 `;
 
-export const POKEMON_DETAIL = gql`
+export const GET_POKEMON_DETAIL = gql`
   query getDetailPokemon($name: [String!]) {
     species: pokemon_v2_pokemonspecies(
       where: { name: { _in: $name } }

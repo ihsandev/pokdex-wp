@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import {
   GET_POKEMON_BY_FILTER_TYPES,
   GET_TYPES,
-  QUERY_POKEMONS,
+  GET_POKEMONS,
 } from "../../../graphql/_queries";
 import client from "../../../configs/apollo-client";
 
@@ -15,7 +15,7 @@ export default function useAction() {
   const [limit, setLimit] = useState(perPage);
   const [typesFilter, setTypesFilter] = useState([]);
 
-  const { data, loading, fetchMore } = useQuery(QUERY_POKEMONS, {
+  const { data, loading, fetchMore } = useQuery(GET_POKEMONS, {
     variables: {
       offset: 0,
       limit,

@@ -1,9 +1,11 @@
-import { ApolloClient, InMemoryCache } from "@apollo/client";
+import { ApolloClient, HttpLink, InMemoryCache } from "@apollo/client";
+import fetch from 'cross-fetch';
 
 const client = new ApolloClient({
   uri: "https://beta.pokeapi.co/graphql/v1beta",
   cache: new InMemoryCache(),
   name: 'graphql-pokemon-client',
+  link: new HttpLink({ uri: '/graphql', fetch})
 });
 
 export default client;
