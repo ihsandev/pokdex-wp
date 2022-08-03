@@ -1,3 +1,4 @@
 import PokedexContainer from "./Pokedex";
+import PokedexDetailContainer from "./PokedexDetail";
 
-export { PokedexContainer };
+export { PokedexContainer, PokedexDetailContainer };
