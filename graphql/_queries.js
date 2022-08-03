@@ -103,3 +103,53 @@ export const POKEMON_DETAIL = gql`
     }
   }
 `;
+
+export const GET_TYPES = gql`
+  query getPokemonTypes {
+    types: pokemon_v2_type {
+      id
+      name
+    }
+  }
+`;
+
+export const GET_POKEMON_BY_FILTER_TYPES = gql`
+  query getPokemonByType($limit: Int, $offset: Int, $types: [String!]) {
+    species_aggregate: pokemon_v2_pokemonspecies_aggregate(
+      where: {
+        pokemon_v2_pokemons: {
+          pokemon_v2_pokemontypes: {
+            pokemon_v2_type: { name: { _in: $types } }
+          }
+        }
+      }
+    ) {
+      aggregate {
+        count
+      }
+    }
+    species: pokemon_v2_pokemonspecies(
+      limit: $limit
+      offset: $offset
+      order_by: { id: asc }
+      where: {
+        pokemon_v2_pokemons: {
+          pokemon_v2_pokemontypes: {
+            pokemon_v2_type: { name: { _in: $types } }
+          }
+        }
+      }
+    ) {
+      name
+      id
+      pokemons: pokemon_v2_pokemons {
+        id
+        types: pokemon_v2_pokemontypes {
+          type: pokemon_v2_type {
+            name
+          }
+        }
+      }
+    }
+  }
+`;

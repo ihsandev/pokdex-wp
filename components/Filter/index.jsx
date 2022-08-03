@@ -1,7 +1,7 @@
 import { Button, Flex } from "@chakra-ui/react";
 import { FiSliders } from "react-icons/fi";
 
-const FilterButton = () => {
+const FilterButton = ({ onClick }) => {
   return (
     <Flex
       position="fixed"
@@ -12,11 +12,15 @@ const FilterButton = () => {
       justifyContent="center"
     >
       <Button
+        onClick={onClick}
         rounded={50}
+        position="relative"
+        zIndex={3}
         leftIcon={<FiSliders />}
         bgColor="black"
         color="white"
         _hover={{ bgColor: "blackAlpha.800" }}
+        _active={{ bgColor: "blackAlpha.800" }}
         px="2rem"
         variant="solid"
       >
